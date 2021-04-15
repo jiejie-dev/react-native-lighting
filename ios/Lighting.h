@@ -6,15 +6,15 @@
 //  Copyright © 2021 jerloo. All rights reserved.
 //
 
-#ifndef Lighting_h
 #define Lighting_h
 
 
 #import <Foundation/Foundation.h>
+#import <React/RCTBridgeModule.h>
 
-@interface Light : NSObject
+@interface RNLighting : NSObject <RCTBridgeModule>
 - (void) turnLightOn;
 - (void) turnLightOff;
 - (void) toggle;
-- (bool) isLightActive;
+- (void) isLightActive: (RCTResponseSenderBlock)successCallback;
 @end
