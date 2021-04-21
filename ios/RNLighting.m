@@ -16,7 +16,7 @@ RCT_EXPORT_MODULE()
 RCT_EXPORT_METHOD(isLightActive:(RCTResponseSenderBlock)successCallback)
 {
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    if ([device hasTorch] && [device hasFlash]) {
+    if ([device hasTorch] && [device isTorchActive]) {
         successCallback(@[[NSNull null],@true]);
     } else {
         successCallback(@[[NSNull null],@false]);
@@ -26,7 +26,7 @@ RCT_EXPORT_METHOD(isLightActive:(RCTResponseSenderBlock)successCallback)
 RCT_EXPORT_METHOD(toggle)
 {
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    if ([device hasTorch] && [device hasFlash]) {
+    if ([device hasTorch] && [device isTorchActive]) {
         [self turnLightOff];
     }else{
         [self turnLightOn];
